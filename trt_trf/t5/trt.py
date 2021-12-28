@@ -112,6 +112,7 @@ class TRTHFRunner(TRTNativeRunner, GenerationMixin):
         super().__init__(trt_engine_file, network_metadata)
         self.config = hf_config
         self.batch_size = batch_size
+        self.return_device = "cuda"
 
 class T5TRTEncoder(TRTHFRunner):
     """TRT implemented network interface that can be used to measure inference time."""
@@ -298,7 +299,7 @@ class T5TRTDecoder(TRTHFRunner):
             folded = self.outputs["hidden_states"][:bs * input_length * vocab_size].view(bs, input_length, vocab_size)
 
         # Transfer predictions back from GPU to do greedy search
-        if not getattr(self, 'return_device', None): self.set_return_device("cuda")
+        # if not getattr(self, 'return_device', None): self.set_return_device("cuda")
         return Seq2SeqLMOutput(logits=folded.to(self.return_device))
 
     def prepare_inputs_for_generation(self, input_ids, **kwargs):

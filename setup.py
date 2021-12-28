@@ -34,7 +34,7 @@ args = {
         ]
     }
 }
-
+print(f'Go drink some coffee. This will take a while. ~10 mins')
 os.system(f'pip install -r {root.joinpath("requirements.txt").as_posix()}')
 
 setup(
