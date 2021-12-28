@@ -10,3 +10,4 @@ awscli
 pycuda
 nvidia-tensorrt
 tabulate
+lazycls

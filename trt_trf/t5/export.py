@@ -35,6 +35,8 @@ from torch.nn import Module
 from transformers.generation_utils import GenerationMixin
 from transformers.modeling_outputs import Seq2SeqLMOutput
 
+from trt_trf.config import TRTWorkspaceConfig
+
 # TRT-HuggingFace
 from trt_trf.t5.T5ModelConfig import T5ModelTRTConfig
 from trt_trf.nndf.tensorrt_utils import clamp_weights_onnx_to_fp16_bounds, move_t5_cast_op
@@ -174,7 +176,7 @@ class T5DecoderONNXFile(ONNXModelFile):
 
 # TRT Engine File Encoding #
 class T5DecoderTRTEngine(TRTEngineFile):
-    DEFAULT_TRT_WORKSPACE_MB = 3072
+    DEFAULT_TRT_WORKSPACE_MB = TRTWorkspaceConfig.t5_decoder_workspace_mb # 3072
 
     def __init__(self, model, network_metadata, batch_size = 1):
         super().__init__(model, T5DecoderConverter, network_metadata, batch_size = batch_size)
@@ -206,7 +208,7 @@ class T5DecoderTRTEngine(TRTEngineFile):
 
 
 class T5EncoderTRTEngine(TRTEngineFile):
-    DEFAULT_TRT_WORKSPACE_MB = 2048
+    DEFAULT_TRT_WORKSPACE_MB = TRTWorkspaceConfig.t5_encoder_workspace_mb # 2048
 
     def __init__(self, model, network_metadata, batch_size = 1):
         super().__init__(model, T5EncoderConverter, network_metadata, batch_size = batch_size)

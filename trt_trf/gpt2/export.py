@@ -36,9 +36,9 @@ from transformers.modeling_outputs import CausalLMOutputWithCrossAttentions
 from transformers import GPT2Tokenizer
 
 # TRT-HuggingFace
-from GPT2.GPT2ModelConfig import GPT2ModelTRTConfig
-from NNDF.networks import NetworkMetadata
-from NNDF.models import TRTEngineFile, TorchModelFile, ONNXModelFile, ModelFileConverter
+from trt_trf.gpt2.GPT2ModelConfig import GPT2ModelTRTConfig
+from trt_trf.nndf.networks import NetworkMetadata
+from trt_trf.nndf.models import TRTEngineFile, TorchModelFile, ONNXModelFile, ModelFileConverter
 
 class GPT2TorchFile(TorchModelFile):
     class TorchModule(Module, GenerationMixin):

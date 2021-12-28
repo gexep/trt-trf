@@ -45,9 +45,9 @@ from trt_trf.nndf.networks import (
     NetworkModels,
     TimingProfile,
 )
-from trt_trf.gp2.export import GPT2TorchFile
-from trt_trf.gp2.GPT2ModelConfig import GPT2ModelTRTConfig
-from trt_trf.gp2.measurements import gpt2_inference, full_inference_greedy
+from trt_trf.gpt2.export import GPT2TorchFile
+from trt_trf.gpt2.GPT2ModelConfig import GPT2ModelTRTConfig
+from trt_trf.gpt2.measurements import gpt2_inference, full_inference_greedy
 
 
 class GPT2HuggingFace(FrameworkCommand):

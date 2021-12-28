@@ -1,4 +1,5 @@
+from . import config
 from . import nndf
 from . import t5
-from . import gp2
+from . import gpt2
 from . import benchmark

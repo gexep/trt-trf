@@ -37,6 +37,8 @@ from polygraphy.logger import G_LOGGER as PG_LOGGER
 from torch import load, save
 from torch.nn import Module
 
+from trt_trf.config import TRTWorkspaceConfig
+
 # TRT-HuggingFace
 from trt_trf.nndf.networks import NetworkMetadata
 from trt_trf.nndf.logger import G_LOGGER
@@ -428,7 +430,7 @@ class ONNXModelFile(NNModelFile):
 
 
 class TRTEngineFile(NNModelFile):
-    DEFAULT_TRT_WORKSPACE_MB = 3072
+    DEFAULT_TRT_WORKSPACE_MB = TRTWorkspaceConfig.default_trt_workspace_mb # 3072
 
     @abstractmethod
     def get_dynamic_shape_profiles(self):

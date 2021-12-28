@@ -38,8 +38,8 @@ from transformers.configuration_utils import PretrainedConfig
 from transformers.generation_utils import GenerationMixin
 
 # TRT-HuggingFace
-from NNDF.interface import TRTInferenceCommand
-from NNDF.networks import (
+from trt_trf.nndf.interface import TRTInferenceCommand
+from trt_trf.nndf.networks import (
     NetworkMetadata,
     NetworkModels,
     NetworkModel,
@@ -49,12 +49,12 @@ from NNDF.networks import (
     TimingProfile,
 )
 
-from NNDF.tensorrt_utils import TRTNativeRunner, TRTPolygraphyRunner
-from GPT2.frameworks import GPT2HuggingFace
-from NNDF.general_utils import NNFolderWorkspace
-from GPT2.GPT2ModelConfig import GPT2ModelTRTConfig
-from GPT2.measurements import gpt2_inference, full_inference_greedy
-from GPT2.export import GPT2ONNXFile, GPT2TRTEngine
+from trt_trf.nndf.tensorrt_utils import TRTNativeRunner, TRTPolygraphyRunner
+from trt_trf.gpt2.frameworks import GPT2HuggingFace
+from trt_trf.nndf.general_utils import NNFolderWorkspace
+from trt_trf.gpt2.GPT2ModelConfig import GPT2ModelTRTConfig
+from trt_trf.gpt2.measurements import gpt2_inference, full_inference_greedy
+from trt_trf.gpt2.export import GPT2ONNXFile, GPT2TRTEngine
 
 
 class TRTHFRunner(TRTNativeRunner, GenerationMixin):
