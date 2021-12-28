@@ -298,7 +298,7 @@ class T5TRTDecoder(TRTHFRunner):
             folded = self.outputs["hidden_states"][:bs * input_length * vocab_size].view(bs, input_length, vocab_size)
 
         # Transfer predictions back from GPU to do greedy search
-        if not getattr(self, 'return_device', None): self.set_return_device("cpu")
+        if not getattr(self, 'return_device', None): self.set_return_device("cuda")
         return Seq2SeqLMOutput(logits=folded.to(self.return_device))
 
     def prepare_inputs_for_generation(self, input_ids, **kwargs):
